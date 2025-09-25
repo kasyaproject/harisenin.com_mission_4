@@ -310,7 +310,19 @@ document.getElementById("todoForm").addEventListener("submit", function (e) {
 
 // Reset form
 function resetForm() {
+  // reset semua field
   document.getElementById("todoForm").reset();
+
+  // ambil elemen input date
+  const dateInput = document.getElementById("date");
+
+  // set tanggal hari ini (format yyyy-mm-dd)
+  const today = new Date().toLocaleDateString("id-ID", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  dateInput.value = today;
 }
 
 // Mark as Done

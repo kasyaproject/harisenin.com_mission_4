@@ -783,5 +783,12 @@
 
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+      // set default value ke hari ini
+      document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date().toLocaleDateString("id-ID"); // format yyyy-mm-dd
+        document.getElementById("date").value = today;
+      });
+    </script>
   </body>
 </html>
