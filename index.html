@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="w-full min-h-screen">
+    <div
+      class="flex items-start justify-between w-full min-h-screen p-2 mx-auto lg:p-8 max-w-7xl"
+    >
+      <!-- Sidebar -->
+      <aside
+        class="flex-col hidden lg:flex justify-between w-1/5 h-[calc(100vh-64px)] lg:px-3 px-2 py-4 bg-gray-50 shadow-sm rounded-lg"
+      >
+        <div class="flex flex-col">
+          <h2 class="text-xl font-bold text-gray-600">Menu</h2>
+
+          <!-- Search -->
+          <div class="relative w-full mt-4">
+            <input
+              type="text"
+              placeholder="Search"
+              class="w-full px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg pl-8 font-semibold focus:outline-blue-500"
+            />
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute w-4 h-4 bi bi-search top-2 left-4 fill-gray-400"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+          </div>
+
+          <!-- Task Menu sidebar -->
+          <div class="px-2 mt-4">
+            <p
+              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+            >
+              Tasks
+            </p>
+            <ul>
+              <li class="p-1 rounded-lg bg-gray-200/75 hover:bg-gray-200">
+                <a
+                  href="#"
+                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                >
+                  <div class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-chevron-double-right"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
+                      />
+                    </svg>
+                    <p>Upcoming</p>
+                  </div>
+
+                  <span
+                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                  ></span>
+                </a>
+              </li>
+              <li class="p-1 rounded-lg hover:bg-gray-200">
+                <a
+                  href="/today.html"
+                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                >
+                  <div class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-list-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"
+                      />
+                    </svg>
+                    <p>Today</p>
+                  </div>
+
+                  <span
+                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                  ></span>
+                </a>
+              </li>
+              <li class="p-1 rounded-lg hover:bg-gray-200">
+                <a
+                  href="#"
+                  class="flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-800"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-calendar2-week-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5M8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"
+                    />
+                  </svg>
+                  <p>Calendar</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- List Menu sidebar -->
+          <div class="px-2 mt-4">
+            <p
+              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+            >
+              List
+            </p>
+            <ul>
+              <li class="p-1 rounded-lg hover:bg-gray-200">
+                <a
+                  href="#"
+                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 bg-red-500 rounded-sm"></div>
+                    <p>Personal</p>
+                  </div>
+
+                  <span
+                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                  ></span>
+                </a>
+              </li>
+              <li class="p-1 rounded-lg hover:bg-gray-200">
+                <a
+                  href="#"
+                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded-sm bg-cyan-500"></div>
+                    <p>Work</p>
+                  </div>
+
+                  <span
+                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                  ></span>
+                </a>
+              </li>
+              <li class="p-1 rounded-lg hover:bg-gray-200">
+                <a
+                  href="#"
+                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 bg-yellow-500 rounded-sm"></div>
+                    <p>List 1</p>
+                  </div>
+
+                  <span
+                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                  ></span>
+                </a>
+              </li>
+            </ul>
+
+            <button
+              class="flex items-center w-full gap-2 p-1 rounded-lg hover:bg-gray-200 hover:cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-plus"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+                />
+              </svg>
+              Add New List
+            </button>
+          </div>
+
+          <!-- Tags Menu sidebar -->
+          <div class="w-full px-2 mt-4">
+            <p
+              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+            >
+              Tags
+            </p>
+
+            <div class="flex flex-wrap items-center justify-start gap-1">
+              <button
+                class="flex items-center gap-1 py-1 px-2.5 bg-cyan-200 rounded-sm hover:bg-cyan-300 hover:cursor-pointer"
+              >
+                <p class="text-sm font-semibold text-gray-500 text-nowrap">
+                  Tag 1
+                </p>
+              </button>
+              <button
+                class="flex items-center gap-1 py-1 px-2.5 bg-red-200 rounded-sm hover:bg-red-300 hover:cursor-pointer"
+              >
+                <p class="text-sm font-semibold text-gray-500 text-nowrap">
+                  Tag 2
+                </p>
+              </button>
+              <button
+                class="flex items-center gap-1 py-1 px-2.5 bg-blue-200 rounded-sm hover:bg-blue-300 hover:cursor-pointer"
+              >
+                <p class="text-sm font-semibold text-gray-500 text-nowrap">
+                  Tag 3
+                </p>
+              </button>
+              <button
+                class="flex items-center gap-1 py-1 px-2.5 bg-purple-200 rounded-sm hover:bg-purple-300 hover:cursor-pointer"
+              >
+                <p class="text-sm font-semibold text-gray-500 text-nowrap">
+                  Project apk
+                </p>
+              </button>
+
+              <button
+                class="flex items-center gap-1 py-1 px-1.5 bg-gray-200 rounded-sm hover:bg-gray-300 hover:cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+                  />
+                </svg>
+                <p class="text-sm font-semibold text-nowrap">Add Tag</p>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account -->
+        <div>
+          <button
+            class="flex items-center justify-between w-full px-2 py-1.5 hover:bg-gray-200 hover:cursor-pointer rounded-lg"
+          >
+            <div class="flex items-center gap-2">
+              <img
+                src="https://github.com/shadcn.png"
+                alt="avatar"
+                class="w-8 rounded-lg"
+              />
+
+              <div class="text-left">
+                <p class="text-sm font-semibold">Nama Lengkap</p>
+                <p class="text-xs font-medium -mt-0.5 text-gray-500">
+                  Email@gmail.com
+                </p>
+              </div>
+            </div>
+
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="rotate-90"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.58984 16.59L13.1698 12L8.58984 7.41L9.99984 6L15.9998 12L9.99984 18L8.58984 16.59Z"
+                fill="#3A3541"
+                fill-opacity="0.54"
+              />
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Section -->
+      <main class="flex-1 px-4 py-2 lg:px-10">
+        <div class="flex items-center justify-between w-full">
+          <h1 class="text-4xl font-bold">Upcoming</h1>
+
+          <!-- Drawer Menu -->
+          <div class="block sm:hidden">
+            <button
+              command="show-modal"
+              commandfor="drawer"
+              class="px-2 py-1 text-sm font-semibold text-white rounded-md hover:cursor-pointer hover:bg-gray-200"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 15.5V17.5H22V15.5H2ZM2 10.5V12.5H22V10.5H2ZM2 5.5V7.5H22V5.5H2Z"
+                  fill="#4A505C"
+                />
+              </svg>
+            </button>
+
+            <el-dialog>
+              <dialog
+                id="drawer"
+                aria-labelledby="drawer-title"
+                class="fixed inset-0 overflow-hidden bg-transparent size-auto max-h-none max-w-none not-open:hidden backdrop:bg-transparent"
+              >
+                <el-dialog-backdrop
+                  class="absolute inset-0 transition-opacity duration-500 ease-in-out bg-gray-900/50 data-closed:opacity-0"
+                ></el-dialog-backdrop>
+
+                <div
+                  tabindex="0"
+                  class="absolute inset-0 pl-10 focus:outline-none sm:pl-16"
+                >
+                  <el-dialog-panel
+                    class="relative block max-w-xs ml-auto transition duration-500 ease-in-out transform group/dialog-panel size-full data-closed:translate-x-full sm:duration-700"
+                  >
+                    <!-- Close button, show/hide based on slide-over state. -->
+                    <div
+                      class="absolute top-0 left-0 flex pt-4 pr-2 -ml-8 duration-500 ease-in-out group-data-closed/dialog-panel:opacity-0 sm:-ml-10 sm:pr-4"
+                    >
+                      <button
+                        type="button"
+                        command="close"
+                        commandfor="drawer"
+                        class="relative text-gray-400 rounded-md hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      >
+                        <span class="absolute -inset-2.5"></span>
+                        <span class="sr-only">Close panel</span>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          data-slot="icon"
+                          aria-hidden="true"
+                          class="size-6"
+                        >
+                          <path
+                            d="M6 18 18 6M6 6l12 12"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <!-- Drawer Content -->
+                    <div
+                      class="relative flex flex-col h-full py-6 overflow-y-auto bg-white shadow-xl after:absolute after:inset-y-0 after:left-0 after:w-px after:bg-white/10"
+                    >
+                      <!-- Content -->
+                      <div
+                        class="relative flex flex-col justify-between flex-1 px-4 sm:px-6"
+                      >
+                        <!-- Your content -->
+                        <div>
+                          <h2 class="text-xl font-bold text-gray-600">Menu</h2>
+
+                          <!-- Search -->
+                          <div class="relative w-full mt-4">
+                            <input
+                              type="text"
+                              placeholder="Search"
+                              class="w-full px-3 py-1.5 text-sm bg-white border border-gray-200 rounded-lg pl-10 font-semibold focus:outline-blue-500"
+                            />
+
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="absolute w-4 h-4 bi bi-search top-2 left-4 fill-gray-400"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                              />
+                            </svg>
+                          </div>
+
+                          <!-- Task Menu sidebar -->
+                          <div class="px-2 mt-4">
+                            <p
+                              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+                            >
+                              Tasks
+                            </p>
+                            <ul>
+                              <li
+                                class="p-1 rounded-lg bg-gray-200/75 hover:bg-gray-200"
+                              >
+                                <a
+                                  href="index.html"
+                                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                                >
+                                  <div class="flex items-center gap-2">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="currentColor"
+                                      class="bi bi-chevron-double-right"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
+                                      />
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
+                                      />
+                                    </svg>
+                                    <p>Upcoming</p>
+                                  </div>
+
+                                  <span
+                                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                                  ></span>
+                                </a>
+                              </li>
+                              <li class="p-1 rounded-lg hover:bg-gray-200">
+                                <a
+                                  href="today.html"
+                                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                                >
+                                  <div class="flex items-center gap-2">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      fill="currentColor"
+                                      class="bi bi-list-check"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path
+                                        fill-rule="evenodd"
+                                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"
+                                      />
+                                    </svg>
+                                    <p>Today</p>
+                                  </div>
+
+                                  <span
+                                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                                  ></span>
+                                </a>
+                              </li>
+                              <li class="p-1 rounded-lg hover:bg-gray-200">
+                                <a
+                                  href="#"
+                                  class="flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-800"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="bi bi-calendar2-week-fill"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path
+                                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5M8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"
+                                    />
+                                  </svg>
+                                  <p>Calendar</p>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <!-- List Menu sidebar -->
+                          <div class="px-2 mt-4">
+                            <p
+                              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+                            >
+                              List
+                            </p>
+                            <ul>
+                              <li class="p-1 rounded-lg hover:bg-gray-200">
+                                <a
+                                  href="#"
+                                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                                >
+                                  <div class="flex items-center gap-2">
+                                    <div
+                                      class="w-4 h-4 bg-red-500 rounded-sm"
+                                    ></div>
+                                    <p>Personal</p>
+                                  </div>
+
+                                  <span
+                                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                                  ></span>
+                                </a>
+                              </li>
+                              <li class="p-1 rounded-lg hover:bg-gray-200">
+                                <a
+                                  href="#"
+                                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                                >
+                                  <div class="flex items-center gap-2">
+                                    <div
+                                      class="w-4 h-4 rounded-sm bg-cyan-500"
+                                    ></div>
+                                    <p>Work</p>
+                                  </div>
+
+                                  <span
+                                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                                  ></span>
+                                </a>
+                              </li>
+                              <li class="p-1 rounded-lg hover:bg-gray-200">
+                                <a
+                                  href="#"
+                                  class="flex items-center justify-between font-semibold text-gray-500 hover:text-gray-800 group"
+                                >
+                                  <div class="flex items-center gap-2">
+                                    <div
+                                      class="w-4 h-4 bg-yellow-500 rounded-sm"
+                                    ></div>
+                                    <p>List 1</p>
+                                  </div>
+
+                                  <span
+                                    class="text-sm text-center bg-gray-200 rounded-sm w-7 group-hover:bg-white"
+                                  ></span>
+                                </a>
+                              </li>
+                            </ul>
+
+                            <button
+                              class="flex items-center w-full gap-2 p-1 rounded-lg hover:bg-gray-200 hover:cursor-pointer"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-plus"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+                                />
+                              </svg>
+                              Add New List
+                            </button>
+                          </div>
+
+                          <!-- Tags Menu sidebar -->
+                          <div class="w-full px-2 mt-4">
+                            <p
+                              class="mt-4 mb-2 text-sm font-bold text-gray-600 hover:text-gray-800"
+                            >
+                              Tags
+                            </p>
+
+                            <div
+                              class="flex flex-wrap items-center justify-start gap-1"
+                            >
+                              <button
+                                class="flex items-center gap-1 py-1 px-2.5 bg-cyan-200 rounded-sm hover:bg-cyan-300 hover:cursor-pointer"
+                              >
+                                <p
+                                  class="text-sm font-semibold text-gray-500 text-nowrap"
+                                >
+                                  Tag 1
+                                </p>
+                              </button>
+                              <button
+                                class="flex items-center gap-1 py-1 px-2.5 bg-red-200 rounded-sm hover:bg-red-300 hover:cursor-pointer"
+                              >
+                                <p
+                                  class="text-sm font-semibold text-gray-500 text-nowrap"
+                                >
+                                  Tag 2
+                                </p>
+                              </button>
+                              <button
+                                class="flex items-center gap-1 py-1 px-2.5 bg-blue-200 rounded-sm hover:bg-blue-300 hover:cursor-pointer"
+                              >
+                                <p
+                                  class="text-sm font-semibold text-gray-500 text-nowrap"
+                                >
+                                  Tag 3
+                                </p>
+                              </button>
+                              <button
+                                class="flex items-center gap-1 py-1 px-2.5 bg-purple-200 rounded-sm hover:bg-purple-300 hover:cursor-pointer"
+                              >
+                                <p
+                                  class="text-sm font-semibold text-gray-500 text-nowrap"
+                                >
+                                  Project apk
+                                </p>
+                              </button>
+
+                              <button
+                                class="flex items-center gap-1 py-1 px-1.5 bg-gray-200 rounded-sm hover:bg-gray-300 hover:cursor-pointer"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  class="bi bi-plus"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+                                  />
+                                </svg>
+                                <p class="text-sm font-semibold text-nowrap">
+                                  Add Tag
+                                </p>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Avatar -->
+                        <button
+                          class="flex items-center justify-between w-full px-2 py-1.5 hover:bg-gray-200 hover:cursor-pointer rounded-lg"
+                        >
+                          <div class="flex items-center gap-2">
+                            <img
+                              src="https://github.com/shadcn.png"
+                              alt="avatar"
+                              class="w-8 rounded-lg"
+                            />
+
+                            <div class="text-left">
+                              <p class="text-sm font-semibold">Nama Lengkap</p>
+                              <p
+                                class="text-xs font-medium -mt-0.5 text-gray-500"
+                              >
+                                Email@gmail.com
+                              </p>
+                            </div>
+                          </div>
+
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="rotate-90"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M8.58984 16.59L13.1698 12L8.58984 7.41L9.99984 6L15.9998 12L9.99984 18L8.58984 16.59Z"
+                              fill="#3A3541"
+                              fill-opacity="0.54"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </el-dialog-panel>
+                </div>
+              </dialog>
+            </el-dialog>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="mt-10 mb-2 text-xl font-bold">Today</h2>
+          <ul id="todayList"></ul>
+        </div>
+
+        <div class="flex items-start justify-center gap-2">
+          <div class="w-full">
+            <h2 class="mt-6 mb-2 text-xl font-bold">Week</h2>
+            <ul id="weekList"></ul>
+          </div>
+
+          <div class="w-full">
+            <h2 class="mt-6 mb-2 text-xl font-bold">Month</h2>
+            <ul id="monthList"></ul>
+          </div>
+        </div>
+      </main>
+
+      <!-- Add New Task -->
+      <div
+        class="w-1/4 p-2 hidden lg:block bg-gray-50 shadow-sm rounded-lg h-[calc(100vh-64px)]"
+      >
+        <h2 class="text-xl font-bold text-gray-600">Task:</h2>
+
+        <form id="todoForm" class="flex flex-col gap-4 mt-6">
+          <input
+            type="text"
+            id="title"
+            placeholder="What's the task?"
+            class="w-full px-2 py-0.5 font-semibold bg-white border border-gray-300 rounded-md"
+            required
+          />
+
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            cols="50"
+            class="w-full p-2 font-semibold bg-white border border-gray-300 rounded-md min-h-20 max-h-80"
+            placeholder="Description"
+          ></textarea>
+
+          <div class="relative max-w-sm">
+            <div
+              class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                />
+              </svg>
+            </div>
+            <input
+              id="date"
+              datepicker
+              datepicker-buttons
+              datepicker-autoselect-today
+              datepicker-format="dd/mm/yyyy"
+              type="text"
+              readonly
+              autocomplete="off"
+              class="bg-gray-50 border text-sm font-semibold border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+              placeholder="Due date"
+            />
+          </div>
+
+          <div class="flex items-center gap-1">
+            <button
+              type="button"
+              onclick="resetForm()"
+              class="w-full py-1.5 hover:cursor-pointer text-sm font-semibold rounded-md border border-gray-200 hover:bg-gray-100"
+            >
+              Reset
+            </button>
+
+            <button
+              type="submit"
+              class="w-full py-1.5 hover:cursor-pointer text-sm font-semibold text-white rounded-md bg-blue-300 hover:bg-blue-400"
+            >
+              Add Task
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
