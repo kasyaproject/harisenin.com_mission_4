@@ -761,6 +761,59 @@
             />
           </div>
 
+          <div class="px-1 mb-4">
+            <label
+              for="priority"
+              class="block mb-2 text-sm font-medium text-gray-600"
+              >Priority :</label
+            >
+
+            <div id="priority" class="flex items-center gap-2 px-2">
+              <!-- Hidden radio inputs -->
+              <input
+                type="radio"
+                name="priority"
+                id="low"
+                value="low"
+                class="hidden peer/low"
+                checked
+              />
+              <input
+                type="radio"
+                name="priority"
+                id="medium"
+                value="medium"
+                class="hidden peer/medium"
+              />
+              <input
+                type="radio"
+                name="priority"
+                id="high"
+                value="high"
+                class="hidden peer/high"
+              />
+
+              <!-- Styled buttons -->
+              <label
+                for="low"
+                class="px-3.5 py-1.5 text-xs font-semibold rounded cursor-pointer border text-blue-300 bg-blue-100 peer-checked/low:bg-blue-600 peer-checked/low:text-white"
+                >Low</label
+              >
+
+              <label
+                for="medium"
+                class="px-3.5 py-1.5 text-xs font-semibold rounded cursor-pointer border text-green-300 bg-green-100 peer-checked/medium:bg-green-600 peer-checked/medium:text-white"
+                >Medium</label
+              >
+
+              <label
+                for="high"
+                class="px-3.5 py-1.5 text-xs font-semibold rounded cursor-pointer border text-red-300 bg-red-100 peer-checked/high:bg-red-600 peer-checked/high:text-white"
+                >High</label
+              >
+            </div>
+          </div>
+
           <div class="flex items-center gap-1">
             <button
               type="button"
@@ -772,7 +825,7 @@
 
             <button
               type="submit"
-              class="w-full py-1.5 hover:cursor-pointer text-sm font-semibold text-white rounded-md bg-blue-300 hover:bg-blue-400"
+              class="w-full py-1.5 hover:cursor-pointer text-sm font-semibold text-white rounded-md bg-blue-800 hover:bg-blue-900"
             >
               Add Task
             </button>

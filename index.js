@@ -9,120 +9,140 @@ if (!todos || todos.length === 0) {
       title: "Belajar JavaScript",
       description: "Menyelesaikan materi DOM dan localStorage",
       date: "19/09/2025",
+      priority: "high",
     },
     {
       id: 2,
       title: "Olahraga pagi",
       description: "Jogging 3 km di taman dekat rumah",
       date: "21/09/2025",
+      priority: "medium",
     },
     {
       id: 3,
       title: "Meeting kerja",
       description: "Diskusi project dengan tim via Zoom",
       date: "25/09/2025",
+      priority: "high",
     },
     {
       id: 4,
       title: "Jalan-jalan",
       description: "Pergi ke pantai bersama teman-teman",
       date: "01/10/2025",
+      priority: "low",
     },
     {
       id: 5,
       title: "Beli buku",
       description: "Membeli buku JavaScript lanjutan di toko buku",
       date: "15/10/2025",
+      priority: "medium",
     },
     {
       id: 6,
       title: "Nonton film",
       description: "Menonton film terbaru di bioskop",
       date: "05/11/2025",
+      priority: "low",
     },
     {
       id: 7,
       title: "Coding React",
       description: "Mengerjakan latihan membuat todo app dengan React",
       date: "12/11/2025",
+      priority: "high",
     },
     {
       id: 8,
       title: "Liburan keluarga",
       description: "Mengunjungi rumah nenek di kampung",
       date: "20/12/2025",
+      priority: "medium",
     },
     {
       id: 9,
       title: "Belanja akhir tahun",
       description: "Membeli kebutuhan rumah untuk libur panjang",
       date: "28/12/2025",
+      priority: "high",
     },
     {
       id: 10,
       title: "Tahun Baru",
       description: "Merayakan malam tahun baru bersama keluarga",
       date: "31/12/2025",
+      priority: "medium",
     },
     {
       id: 11,
       title: "Mulai diet sehat",
       description: "Makan lebih banyak sayur, kurangi gorengan",
       date: "05/01/2026",
+      priority: "high",
     },
     {
       id: 12,
       title: "Belajar Node.js",
       description: "Mendalami Express.js dan REST API",
       date: "10/01/2026",
+      priority: "high",
     },
     {
       id: 13,
       title: "Main futsal",
       description: "Pertandingan persahabatan dengan tim RT",
       date: "15/01/2026",
+      priority: "low",
     },
     {
       id: 14,
       title: "Workshop UI/UX",
       description: "Ikut pelatihan desain UI modern",
       date: "25/01/2026",
+      priority: "medium",
     },
     {
       id: 15,
       title: "Project freelance",
       description: "Mengerjakan website client toko online",
       date: "03/02/2026",
+      priority: "high",
     },
     {
       id: 16,
       title: "Berenang",
       description: "Latihan renang di kolam renang umum",
       date: "09/02/2026",
+      priority: "low",
     },
     {
       id: 17,
       title: "Belajar TypeScript",
       description: "Mempelajari dasar-dasar TypeScript untuk project React",
       date: "20/02/2026",
+      priority: "high",
     },
     {
       id: 18,
       title: "Hackathon event",
       description: "Ikut lomba coding maraton 48 jam",
       date: "27/02/2026",
+      priority: "high",
     },
     {
       id: 19,
       title: "Camping",
       description: "Camping di gunung bersama sahabat",
       date: "10/03/2026",
+      priority: "medium",
     },
     {
       id: 20,
       title: "Belajar Laravel",
       description: "Mengerjakan project CRUD dengan Laravel 11",
       date: "20/03/2026",
+      priority: "high",
     },
   ];
 
@@ -237,6 +257,17 @@ function renderTodos(filter = "today") {
                 <td class="p-1">${todo.description}</td>
               </tr>
               <tr>
+                <td class="p-1 align-top">Prior</td>
+                <td class="p-1 align-top">:</td>
+                <td class="p-1">${
+                  todo.priority === "high"
+                    ? `<span class="px-1.5 py-0.5 text-xs font-semibold text-red-600 bg-red-100 rounded">High</span>`
+                    : todo.priority === "medium"
+                    ? `<span class="px-1.5 py-0.5 text-xs font-semibold text-green-600 bg-green-100 rounded">Medium</span>`
+                    : `<span class="px-1.5 py-0.5 text-xs font-semibold text-blue-600 bg-blue-100 rounded">Low</span>`
+                }</td>
+              </tr>
+              <tr>
                 <td class="p-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -291,6 +322,9 @@ document.getElementById("todoForm").addEventListener("submit", function (e) {
   const title = document.getElementById("title");
   const description = document.getElementById("description");
   const date = document.getElementById("date");
+  const priority = document.querySelector(
+    'input[name="priority"]:checked'
+  ).value;
 
   const newTodo = {
     id: todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 1, // auto id
@@ -298,6 +332,7 @@ document.getElementById("todoForm").addEventListener("submit", function (e) {
     description: description.value,
     date: date.value,
     done: false,
+    priority: priority, // simpan priority
   };
 
   todos.push(newTodo);
