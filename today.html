@@ -10,7 +10,7 @@
 
   <body class="w-full min-h-screen">
     <div
-      class="flex items-start justify-between w-full min-h-screen p-2 mx-auto lg:p-8 max-w-7xl"
+      class="flex flex-col items-start justify-between w-full min-h-screen p-2 mx-auto lg:flex-row lg:p-8 max-w-7xl"
     >
       <!-- Sidebar -->
       <aside
@@ -299,15 +299,15 @@
       </aside>
 
       <!-- Main Section -->
-      <main class="flex-1 px-4 py-2 lg:px-10">
+      <main class="flex-1 w-full px-4 py-2 lg:px-10">
         <div class="flex items-center justify-between w-full">
           <h1 class="text-4xl font-bold">Today</h1>
 
-          <!-- Drawer Menu -->
+          <!-- Drawer Sidebar -->
           <div class="block sm:hidden">
             <button
               command="show-modal"
-              commandfor="drawer"
+              commandfor="drawer-sidebar"
               class="px-2 py-1 text-sm font-semibold text-white rounded-md hover:cursor-pointer hover:bg-gray-200"
             >
               <svg
@@ -326,7 +326,7 @@
 
             <el-dialog>
               <dialog
-                id="drawer"
+                id="drawer-sidebar"
                 aria-labelledby="drawer-title"
                 class="fixed inset-0 overflow-hidden bg-transparent size-auto max-h-none max-w-none not-open:hidden backdrop:bg-transparent"
               >
@@ -348,7 +348,7 @@
                       <button
                         type="button"
                         command="close"
-                        commandfor="drawer"
+                        commandfor="drawer-sidebar"
                         class="relative text-gray-400 rounded-md hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                       >
                         <span class="absolute -inset-2.5"></span>
@@ -689,14 +689,15 @@
           </div>
         </div>
 
+        <!-- List Today -->
         <ul id="todayList" class="mt-10"></ul>
       </main>
 
       <!-- Add New Task -->
       <div
-        class="w-1/4 hidden lg:block p-2 bg-gray-50 shadow-sm rounded-lg h-[calc(100vh-64px)]"
+        class="lg:w-1/4 w-full p-2 bg-gray-50 border border-gray-200 shadow-sm rounded-lg py-6 lg:py-0 lg:h-[calc(100vh-64px)]"
       >
-        <h2 class="text-xl font-bold text-gray-600">Task:</h2>
+        <h2 class="text-xl font-bold text-gray-600">Add Task:</h2>
 
         <form id="todoForm" class="flex flex-col gap-4 mt-6">
           <input
@@ -716,7 +717,7 @@
             placeholder="Description"
           ></textarea>
 
-          <div class="relative max-w-sm">
+          <div class="relative">
             <div
               class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
             >
@@ -734,6 +735,7 @@
             </div>
             <input
               id="date"
+              name="date"
               datepicker
               datepicker-buttons
               datepicker-autoselect-today

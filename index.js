@@ -321,7 +321,7 @@ document.getElementById("todoForm").addEventListener("submit", function (e) {
 
   const title = document.getElementById("title");
   const description = document.getElementById("description");
-  const date = document.getElementById("date");
+  const date = document.querySelector('[name="date"]');
   const priority = document.querySelector(
     'input[name="priority"]:checked'
   ).value;
